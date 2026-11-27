@@ -1,0 +1,79 @@
+{% extends 'equipamentos/base.html' %}
+
+{% block title %}
+Detalhes do equipamento
+{% endblock %}
+
+{% block content %}
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <h1>
+            {{ equipamento.nome }}
+        </h1>
+
+        <hr>
+
+        <p>
+            <strong>Categoria:</strong>
+            {{ equipamento.categoria }}
+        </p>
+
+        <p>
+            <strong>Quantidade:</strong>
+            {{ equipamento.quantidade }}
+        </p>
+
+        <p>
+            <strong>Descrição:</strong>
+            {{ equipamento.descricao|default:"Não informada" }}
+        </p>
+
+        <p>
+            <strong>Kits:</strong>
+        </p>
+
+        {% if equipamento.kits.all %}
+
+            <ul>
+
+                {% for kit in equipamento.kits.all %}
+
+                    <li>{{ kit.nome }}</li>
+
+                {% empty %}
+
+                    <li>Nenhum kit relacionado.</li>
+
+                {% endfor %}
+
+            </ul>
+
+        {% endif %}
+
+        <div class="mt-4">
+
+            <a href="{% url 'editar_equipamento' equipamento.id %}"
+               class="btn btn-warning">
+                Editar
+            </a>
+
+            <a href="{% url 'excluir_equipamento' equipamento.id %}"
+               class="btn btn-danger">
+                Excluir
+            </a>
+
+            <a href="{% url 'lista_equipamentos' %}"
+               class="btn btn-secondary">
+                Voltar
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'equipamentos/base.html' %}
+
+{% block title %}
+Equipamentos
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h1>Equipamentos</h1>
+
+        <p class="text-muted">
+            Equipamentos disponíveis no estoque.
+        </p>
+    </div>
+
+    <a href="{% url 'novo_equipamento' %}"
+       class="btn btn-primary">
+        + Adicionar equipamento
+    </a>
+
+</div>
+
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        {% if equipamentos %}
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Quantidade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for equipamento in equipamentos %}
+
+                    <tr>
+
+                        <td>
+                            {{ equipamento.nome }}
+                        </td>
+
+                        <td>
+                            {{ equipamento.categoria }}
+                        </td>
+
+                        <td>
+                            {{ equipamento.quantidade }}
+                        </td>
+
+                        <td>
+
+                            <a href="{% url 'detalhes_equipamento' equipamento.id %}"
+                               class="btn btn-sm btn-info">
+                                Detalhes
+                            </a>
+
+                            <a href="{% url 'editar_equipamento' equipamento.id %}"
+                               class="btn btn-sm btn-warning">
+                                Editar
+                            </a>
+
+                            <a href="{% url 'excluir_equipamento' equipamento.id %}"
+                               class="btn btn-sm btn-danger">
+                                Excluir
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <p class="text-muted">
+            Nenhum equipamento cadastrado.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

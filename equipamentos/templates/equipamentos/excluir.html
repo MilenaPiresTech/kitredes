@@ -1,0 +1,40 @@
+{% extends 'equipamentos/base.html' %}
+
+{% block title %}
+Excluir equipamento
+{% endblock %}
+
+{% block content %}
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <h1>Excluir equipamento</h1>
+
+        <p>
+            Tem certeza que deseja excluir o equipamento
+            <strong>{{ equipamento.nome }}</strong>?
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <button type="submit"
+                    class="btn btn-danger">
+                Sim, excluir
+            </button>
+
+            <a href="{% url 'detalhes_equipamento' equipamento.id %}"
+               class="btn btn-secondary">
+                Cancelar
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

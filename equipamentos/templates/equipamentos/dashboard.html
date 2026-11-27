@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Estoque de Redes</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">
+                📦 Estoque de Redes
+            </span>
+        </div>
+    </nav>
+
+
+    <main class="container mt-5">
+
+        <h1>Estoque de Equipamentos de Redes</h1>
+
+        <p class="text-muted">
+            Sistema de controle de equipamentos.
+        </p>
+
+
+        <div class="row mt-4">
+
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Equipamentos</h5>
+                        <p class="card-text">
+                            Controle dos equipamentos cadastrados.
+                        </p>
+                       <a href="{% url 'lista_equipamentos' %}"
+                       class="btn btn-primary">
+                        Ver equipamentos
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Categorias</h5>
+                        <p class="card-text">
+                            Organize os equipamentos por categoria.
+                        </p>
+                        <button class="btn btn-success">
+                            Ver categorias
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Estoque</h5>
+                        <p class="card-text">
+                            Consulte a quantidade disponível.
+                        </p>
+                        <button class="btn btn-warning">
+                            Consultar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>
