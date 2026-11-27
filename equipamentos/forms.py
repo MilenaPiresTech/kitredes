@@ -3,35 +3,52 @@ from .models import Equipamento
 
 
 class EquipamentoForm(forms.ModelForm):
-
     class Meta:
         model = Equipamento
-        fields = ['nome', 'descricao', 'quantidade', 'categoria', 'kits']
+        fields = [
+            'nome',
+            'descricao',
+            'quantidade',
+            'unidade_medida',
+            'imagem',
+            'categoria',
+        ]
 
         widgets = {
-            'nome': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Digite o nome do equipamento'
-            }),
-
-            'descricao': forms.Textarea(attrs={
-                'class': 'form-control',
-                'rows': 3,
-                'placeholder': 'Digite uma descrição'
-            }),
-
-            'quantidade': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'min': 0
-            }),
-
-            'categoria': forms.Select(attrs={
-                'class': 'form-select'
-            }),
-
-            'kits': forms.SelectMultiple(attrs={
-                'class': 'form-select'
-            }),
+            'nome': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Nome do equipamento'
+                }
+            ),
+            'descricao': forms.Textarea(
+                attrs={
+                    'class': 'form-control',
+                    'rows': 4,
+                    'placeholder': 'Descrição do equipamento'
+                }
+            ),
+            'quantidade': forms.NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'min': 0
+                }
+            ),
+            'unidade_medida': forms.Select(
+                attrs={
+                    'class': 'form-select'
+                }
+            ),
+            'imagem': forms.ClearableFileInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'categoria': forms.Select(
+                attrs={
+                    'class': 'form-select'
+                }
+            ),
         }
 
     def clean_nome(self):
@@ -39,7 +56,7 @@ class EquipamentoForm(forms.ModelForm):
 
         if len(nome.strip()) < 3:
             raise forms.ValidationError(
-                'O nome deve ter pelo menos 3 caracteres.'
+                'O nome deve possuir pelo menos 3 caracteres.'
             )
 
         return nome
