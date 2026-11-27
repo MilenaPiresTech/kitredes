@@ -16,6 +16,17 @@ Detalhes do equipamento
 
         <hr>
 
+        {% if equipamento.imagem %}
+            <div class="text-center mb-4">
+
+                <img src="{{ equipamento.imagem.url }}"
+                     alt="{{ equipamento.nome }}"
+                     class="img-fluid"
+                     style="max-height: 300px;">
+
+            </div>
+        {% endif %}
+
         <p>
             <strong>Categoria:</strong>
             {{ equipamento.categoria }}
@@ -24,6 +35,11 @@ Detalhes do equipamento
         <p>
             <strong>Quantidade:</strong>
             {{ equipamento.quantidade }}
+        </p>
+
+        <p>
+            <strong>Unidade de medida:</strong>
+            {{ equipamento.get_unidade_medida_display }}
         </p>
 
         <p>

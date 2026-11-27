@@ -21,7 +21,10 @@ def lista_equipamentos(request):
 def novo_equipamento(request):
 
     if request.method == 'POST':
-        form = EquipamentoForm(request.POST)
+        form = EquipamentoForm(
+            request.POST,
+            request.FILES
+        )
 
         if form.is_valid():
             form.save()
@@ -64,6 +67,7 @@ def editar_equipamento(request, id):
     if request.method == 'POST':
         form = EquipamentoForm(
             request.POST,
+            request.FILES,
             instance=equipamento
         )
 

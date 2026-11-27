@@ -28,3 +28,6 @@ Thumbs.db
 # Arquivos temporários
 *.tmp
 *.temp
+
+# Pasta de imagens de apoio
+equipamentos/fotos_equipamentos/
